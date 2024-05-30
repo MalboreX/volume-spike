@@ -40,10 +40,11 @@ async function bootstrap() {
                 const volDev2 = VolumeSpike(volumesArray, 21, 2);
                 const volDev3 = VolumeSpike(volumesArray, 21, 3);
 
+                const signalKey = `${SYMBOLS[SYM_INDEX]}_${TIMEFRAMES[TF_INDEX]}_${candle.startTime}`;
                 if (candle.volume > volDev3) {
-                    await notification.notifyIfNotHappened(`Volume Spike Dev. 3%0ASymbol: ${SYMBOLS[SYM_INDEX]}%0AInterval: ${TIMEFRAMES[TF_INDEX]}`);
+                    await notification.notifyIfNotHappened(signalKey, `Volume Spike Dev. 3%0ASymbol: ${SYMBOLS[SYM_INDEX]}%0AInterval: ${TIMEFRAMES[TF_INDEX]}`);
                 } else if (candle.volume > volDev2) {
-                    await notification.notifyIfNotHappened(`Volume Spike Dev. 2 %0ASymbol: ${SYMBOLS[SYM_INDEX]}%0AInterval: ${TIMEFRAMES[TF_INDEX]}`);
+                    await notification.notifyIfNotHappened(signalKey, `Volume Spike Dev. 2 %0ASymbol: ${SYMBOLS[SYM_INDEX]}%0AInterval: ${TIMEFRAMES[TF_INDEX]}`);
                 }
             });
 
