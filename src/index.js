@@ -2,6 +2,7 @@ require('dotenv').config();
 
 const Binance = require('binance-api-node').default;
 const Notification = require('./notify/notification');
+const Telegram = require('./notify/providers/telegram');
 
 const { DataFeedCore } = require('./core/data-feed-core');
 
@@ -11,7 +12,7 @@ const CandlestickArrayToVolumes = require('./transformers/candlestick-array-to-v
 const VolumeSpike = require('./indicators/volume-spike');
 
 const client = Binance();
-const notification = new Notification();
+const notification = new Notification(new Telegram());
 
 const SYMBOLS = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT'];
 const TIMEFRAMES = ['1m', '5m', '15m'];
