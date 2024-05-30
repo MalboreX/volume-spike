@@ -15,4 +15,4 @@ class Telegram {
     }
 }
 
-module.exports.Telegram = Telegram;
+module.exports = Telegram;
